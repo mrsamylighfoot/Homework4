@@ -1,0 +1,79 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+:root {
+    box-sizing: border-box;
+    /* Choose to change colors based on default, wrong or right answers */
+    --hueDefault: gray;
+    --hueWrong: pink;
+    --hueRight: palegreen;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+body.right {
+    --hue: var(--hueRight);
+}
+
+body.wrong {
+    --hue: var(--hueWrong);
+}
+
+.container{
+    width: 800px;
+    max-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+}
+
+.btnGrid{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.btn {
+    --hue: var(--hueDefault);
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px 10 px;
+    color: navy;
+}
+
+.btn.right {
+    --hue: var(--hueRight);
+}
+
+.btn.wrong {
+    --hue: var(--hueWrong);
+}
+
+.startBtn, .nextBtn {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    padding: 10px 20px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hide what we don't need on page */
+.hide {
+    display: none;
+}
