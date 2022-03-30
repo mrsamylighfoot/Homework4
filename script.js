@@ -1,13 +1,35 @@
 // GIVEN I am taking a code quiz
 // WHEN I click the start button
-var startBtn = document.getElementById('startBtn')
-var nextBtn = document.getElementById('nextBtn')
-var questionContainerEl = document.getElementById('questionContainer')
+var startBtn = document.getElementById('startBtn');
+var nextBtn = document.getElementById('nextBtn');
+var questionContainerEl = document.getElementById('questionContainer');
 let shuffledQuestions, currentQuestionIndex
-var questionEl = document.getElementById('questions')
-var answerBtnEl = document.getElementById('answerBtns')
+var questionEl = document.getElementById('questions');
+var answerBtnEl = document.getElementById('answerBtns');
+var StartScreen = document.getElementById('start screen');
+var StartButton = document.getElementById('start button');
+var QuestionIndex = 0
 
-startBtn.addEventListener('click', startGame)
+StartButton.addEventListener('click',function(){
+    //StartScreen.setAttribute('class', 'hide');
+    questionContainerEl.removeAttribute('class', 'hide');
+    console.log(myQuestions[0]);
+    getQuestion()
+});
+
+nextBtn.addEventListener('click', function(){
+    questionContainerEl.removeAttribute('class', 'hide');
+    console.log(myQuestions);
+    getQuestion()
+});
+
+function getQuestion (){
+    console.log(myQuestions[0]);
+    questionEl.textContent = myQuestions[QuestionIndex].question;
+    console.log(myQuestions[QuestionIndex].answers[0]);
+    QuestionIndex++;
+}
+
 
 
 // THEN a timer starts and I am presented with a question
@@ -49,19 +71,19 @@ function nextQuestion () {
 
 }
 
-function showQuestion () {
-    questionEl.innerText = questions.questions
-    questions.answers.forEach(answer => {
-        var button = document.createElement('button')
-        button.innerText = answer.text
-        button.classList.add('btn')
-        if (answer.right) {
-            button.dataset.right = answer.right
-        }
-        button.addEventListener('click', answerQuestion)
-        answerBtnEl.appendChild(button)
-    })
-}
+// function showQuestion () {
+//     questionEl.innerText = questions.questions
+//     questions.answers.forEach(answer => {
+//         var button = document.createElement('button')
+//         button.innerText = answer.text
+//         button.classList.add('btn')
+//         if (answer.right) {
+//             button.dataset.right = answer.right
+//         }
+//         button.addEventListener('click', answerQuestion)
+//         answerBtnEl.appendChild(button)
+//     })
+// }
 
 function resetState () {
     nextBtn.classList.add('hide')
